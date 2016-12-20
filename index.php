@@ -482,7 +482,8 @@
                         selectMonths: true,
                         selectYears: 31,
                         max: [2005, 7, 14],
-                        closeOnSelect: true
+                        closeOnSelect: true,
+                        closeOnClear: false,
                     });
                 });
 

@@ -7,6 +7,7 @@ if(isset($_POST['export_excel']))
 	$result = mysqli_query($connect, $sql);
 	if(mysqli_num_rows($result)>0)
 		{
+
 			$output.= '
 			<table border="1">
 			<caption style="text-align:center;">Student Details</caption>
@@ -88,6 +89,11 @@ if(isset($_POST['export_excel']))
 
 			while($row = mysqli_fetch_array($result))
 			{
+				if($row['verified']==1)
+                $h= "Yes";
+           		 else
+            	$h= "No"; 
+
 				$output.= '
 				<tr>
 					<td>'.$row["Date"].'</td>
@@ -147,12 +153,8 @@ if(isset($_POST['export_excel']))
 							<td>'.$row['experience_duration'].'</td>
 							<td>'.$row['exp_organisation_name'].'</td>
 							<td>'.$row['hostel_req'].'</td>
-							<td>'.$row['verified'].'</td>
-								
+							<td>'.$h.'</td>
                                
-
-
-                                
 
 				</tr>
 				';

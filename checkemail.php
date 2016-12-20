@@ -1,5 +1,6 @@
 <?php 
-$con = mysqli_connect("localhost","root","","akgim-registration");
+include('dbconnect.php');
+
 	$emailId=$_GET['email'];
 	$checkdata="SELECT * FROM studentdetails WHERE email='$emailId'";
 	$query=mysqli_query($con,$checkdata);

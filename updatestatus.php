@@ -1,8 +1,9 @@
 <?php
+include('dbconnect.php');
 if(isset($_POST['submit_confirm']))
 {
   $email=$_POST['email'];
-  $con=mysqli_connect("localhost","root","","akgim-registration");
+  
   $query=mysqli_query($con,"UPDATE studentdetails SET verified='1' where md5(email)='$email'");
   if($query){
 

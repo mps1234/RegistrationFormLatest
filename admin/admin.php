@@ -1,5 +1,6 @@
 <?php 
 session_start();
+
 if(!isset($_SESSION["sess_user_a"])){
   header("Location:index.php");
 }
@@ -145,8 +146,7 @@ window.onload=scroll;
  
 		<div id="header">
 					<h1 style="text-align: center">Ajay Kumar Garg Institute of Management</h1><hr size="2">
-					<!--<a href="logout.php" style="text-decoration:none;float: right; ">Logout</a>-->
-          
+					          
 
 			<h2 style="text-align: center;text-decoration: underline;">MBA Registration Form</h2>
 			<h2 style="text-align: center;">Student Details</h2>
@@ -156,11 +156,8 @@ window.onload=scroll;
 		
 
 <?php
-		$server = "localhost"; 
-		$user = "root";
- 		$password = "";
- 		$database = "akgim-registration"; 
- 		$con=mysqli_connect($server,$user,$password,$database) or die ("Connection Fails"); 
+include('../dbconnect.php');
+		 
  		$data = mysqli_query($con,"SELECT * FROM studentdetails"); 
 ?>
 
@@ -303,8 +300,13 @@ window.onload=scroll;
 
                                	<td><?php echo $r['experience_duration']; ?></td>
                                	<td><?php echo $r['exp_organisation_name']; ?></td>
-                               	<td><?php echo $r['hostel_req']; ?></td>
-                               	<td><?php echo $r['verified']; ?></td>
+                                <td><?php echo $r['hostel_req']; ?></td>
+                               	
+                               	<td><?php if($r['verified']==1)
+                                  echo 'Yes';
+                                  else
+                                  echo 'No'; ?></td>
+
                                 <?php echo '<td><div id="deleteit" value=" '.$r['id'].'"><a style="background:none; color:#0000FF; padding-right:11%;">Delete</a</div><td>'?>
                                 
  		  	  			</tr>

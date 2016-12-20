@@ -63,12 +63,12 @@ p{
 
 
 <?php
-
+include('dbconnect.php');
 if($_GET['key'])
 {
 
   $email=$_GET['key'];
-  $con=mysqli_connect("localhost","root","","akgim-registration");
+  
   $select=mysqli_query($con,"SELECT email,name from studentdetails where md5(email)='".$email."'");
   if(mysqli_num_rows($select)>=1)
   {

@@ -1,7 +1,7 @@
 <?php
+include('dbconnect.php');
 	
-	$con = mysqli_connect("localhost","root","","akgim-registration"); //Database connection
-
+	
 		/* declaration of variables */
 	$see_rollno = $gen_rank = $category_rank = $cat_mat_cmat = $percentile = $other_exam_name = $other_exam_percentile = "";
     $date="";

@@ -101,6 +101,7 @@ else{
 
     
 <?php 
+include('../dbconnect.php');
 
 	if(isset($_POST["Submit"])){
 
@@ -108,7 +109,7 @@ else{
 				$user=$_POST['adusername'];
 				$pass=md5($_POST['adpassword']);
 
-				$con=mysqli_connect("localhost","root","","akgim-registration");
+				
 				$query=mysqli_query($con,"SELECT * FROM admin WHERE username='".$user."' AND password='".$pass."'");
 	$numrows=mysqli_num_rows($query);
 	if($numrows!=0)
