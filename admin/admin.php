@@ -108,7 +108,7 @@ th{
        }
  $(document).ready(function()
 { 
-  $('#deleteit').click(function ()
+  $('.deleteit').click(function ()
     {   
       ajaxFunction($(this));
     });
@@ -300,14 +300,14 @@ include('../dbconnect.php');
 
                                	<td><?php echo $r['experience_duration']; ?></td>
                                	<td><?php echo $r['exp_organisation_name']; ?></td>
-                                <td><?php echo $r['hostel_req']; ?></td>
+                                <td><?php echo $r['exp_organisation_name']; ?></td>
                                	
                                	<td><?php if($r['verified']==1)
                                   echo 'Yes';
                                   else
                                   echo 'No'; ?></td>
 
-                                <?php echo '<td><div id="deleteit" value=" '.$r['id'].'"><a style="background:none; color:#0000FF; padding-right:11%;">Delete</a</div><td>'?>
+                                <?php echo '<td><div class="deleteit" value=" '.$r['id'].'"><a style="background:none;cursor:pointer;background-color:red;color:white; padding-right:11%;border-radius:5px;padding-left:11%;">Delete</a></div><td>'?>
                                 
  		  	  			</tr>
  		  	  		
