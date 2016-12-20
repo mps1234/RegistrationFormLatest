@@ -109,7 +109,7 @@ if(mysqli_num_rows($query)>=1)
       $email1=md5($row['email']);
 	  $email=$row['email'];
     }
-    $link="<a href='117.55.241.58/akgim-registration-form/reset.php?key=".$email1."'>Click here to verify your email and confirm form submission</a>";
+    $link="<a href='http://admission.akgim.edu.in/reset.php?key=".$email1."'>Click here to verify your email and confirm form submission</a>";
     
     
     require 'PHPmail/PHPMailerAutoload.php';

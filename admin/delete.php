@@ -2,7 +2,7 @@
 include('../dbconnect.php');
 session_start();
 if(!isset($_SESSION["sess_user_a"])){
-	header("Location:index.php");
+	header("Location:http://admission.akgim.edu.in/admin/index.php");
 } else 
 {   
 	

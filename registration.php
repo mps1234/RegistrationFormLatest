@@ -87,14 +87,11 @@ if(isset($_POST['submit']))
 						if($result)
 							{	
 								$message = "Form submitted, kindly confirm your email on which verification link will be sent";
-//								echo "<script type='text/javascript'>alert('$message');</script>";
 
 								session_start();
 								$_SESSION['email12'] = $email;
-								header('Refresh:0;url=confirmsubmit.php');
-								/*echo "Form Submitted<br>";
-								echo "Kindly confirm your email on which verification link has been sent";
-								*/
+								header('Refresh:0;url=http://admission.akgim.edu.in/confirmsubmit.php');
+								
 							}
 						else
 							{

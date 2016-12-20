@@ -1,7 +1,7 @@
 <?php 
 session_start();
 if(isset($_SESSION["sess_user_a"])){
-  header("Location:admin.php");
+  header("Location:http://admission.akgim.edu.in/admin/admin.php");
 }
 else{
 
@@ -128,7 +128,7 @@ include('../dbconnect.php');
 
 
 			/* Redirect browser */
-			header("Location: admin.php");
+			header("Location: http://admission.akgim.edu.in/admin/admin.php");
 		}
 	} else {
 				echo "<div class='alert2' style='text-align:center;'>

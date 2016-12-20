@@ -76,7 +76,7 @@ if($_GET['key'])
 
 
     <div id="block">
-    <form method="POST" action="updatestatus.php">
+    <form method="POST" action="http://admission.akgim.edu.in/updatestatus.php">
     <input type="hidden" name="email" value="<?php echo $email;?>">
 	
 	    <?php

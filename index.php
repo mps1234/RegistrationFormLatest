@@ -43,7 +43,7 @@
             $.ajax({
                 type: 'GET',
 
-                url: 'checkemail.php',
+                url: 'http://admission.akgim.edu.in/checkemail.php',
                 data: {
                     email: email
                 },
@@ -88,7 +88,7 @@
             Field marked with an asterisk (*) are mandatory.
         </div>
         <div class="col s12 m12 left-align">If you have appeared for any of the following exams,please enter the details</div>
-        <form method="POST" action="registration.php" name="registration" onsubmit="return confirm('Do you really want to submit the form?');">
+        <form method="POST" action="http://admission.akgim.edu.in/registration.php" name="registration" onsubmit="return confirm('Do you really want to submit the form?');">
             <div class="row">
                 <div class="col s1 m1"></div>
                 <div class="col s2 m2">
@@ -460,7 +460,7 @@
                 </div>
                 <div class="col s2 m2">
                     <select class="browser-default" name="hostelreq" id="hostlereq" data-validation="required">
-                     <!-- <option value="" selected disabled>Select</option> -->
+                    
                       <option value="Yes">Yes</option>
                       <option value="No">No</option>
                     </select>

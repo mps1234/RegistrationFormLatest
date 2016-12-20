@@ -2,7 +2,7 @@
 session_start();
 
 if(!isset($_SESSION["sess_user_a"])){
-  header("Location:index.php");
+  header("Location:http://admission.akgim.edu.in/admin/index.php");
 }
 else{
 
@@ -150,7 +150,7 @@ window.onload=scroll;
 
 			<h2 style="text-align: center;text-decoration: underline;">MBA Registration Form</h2>
 			<h2 style="text-align: center;">Student Details</h2>
-      <button style="margin-right:10%;" class='btn btn-primary' onclick="window.location.href='logout.php'">Logout</button>
+      <button style="margin-right:10%;" class='btn btn-primary' onclick="window.location.href='http://admission.akgim.edu.in/admin/logout.php'">Logout</button>
 
 		</div>
 		
@@ -319,7 +319,7 @@ include('../dbconnect.php');
  		  	  		</div>
               <div class="show"></div>
               <div>
-                <form action="excel.php" method="post">
+                <form action="http://admission.akgim.edu.in/admin/excel.php" method="post">
                   <input type="submit" name="export_excel" class="btn btn-primary" value="Export to excel">
               </div>
 </body>
