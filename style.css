@@ -1,0 +1,44 @@
+
+.border {
+    padding: 2%; !important
+    margin: 2%; !important
+}
+th,tr,td {
+    border: 1px solid black !important;
+}
+
+h5 {
+    font-size: 1.2em !important;
+}
+.error{
+	color:red;
+}
+
+.input-field input[type=text].invalid {
+     border-bottom: 1px solid #00ff00 !important;
+     box-shadow: 0 1px 0 0 #00ff00 !important;
+   }
+
+.error-class {
+    color:#FF0000;
+}
+
+.padding {
+    padding-top: 25%; !important
+}
+.help-block{
+    display: block;
+    font-size: 11px;
+}
+
+.header {
+    background-image: url('header.jpg') !important;
+    background: no-repeat;
+    background-color: #800;
+    background-size: contain !important;
+}
+
+body{
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
