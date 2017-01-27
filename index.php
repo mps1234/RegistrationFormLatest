@@ -461,7 +461,7 @@
                                 <h5>Post Graduation</h5>
                 <div class="input-field">
                     <select class="browser-default" type="text" id="postgraduationcourse" name="postgraduationcourse">
-
+                    <option value="">Select</option>>
                         <option value="M.A.">M.A.</option>
                         <option value="M.Com.">M.Com.</option>
                         <option value="M.Sc.">M.Sc.</option>
@@ -509,7 +509,12 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
 
+            <div class="row">
+                <div class="col s12 m12">
+                    <h5 style="font-family: calibri;"><u>NOTE</u> : <b>Student appearing in Graduation final year may enter the average percentage of marks available of all previous years.</b></h5>
+                </div>
             </div>
 
             <div class="row">
