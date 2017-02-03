@@ -116,6 +116,15 @@ th{
 </script>
 
 <script>
+function ConfirmDelete()
+{
+  var x = confirm("Are you sure you want to delete?");
+  if (x)
+      return true;
+  else
+    return false;
+}
+
 function myFunction() {
   var input, filter, table, tr, td, i;
   input = document.getElementById("myInput");
@@ -325,7 +334,7 @@ include('../dbconnect.php');
                                   else
                                   echo 'No'; ?></td>
 
-                                <?php echo '<td><div class="deleteit" value=" '.$r['id'].'"><a style="background:none;cursor:pointer;background-color:red;color:white; padding-right:11%;border-radius:5px;padding-left:11%;">Delete</a></div><td>'?>
+                                <?php echo '<td><div class="deleteit" value=" '.$r['id'].'"><a Onclick="ConfirmDelete()" style="background:none;cursor:pointer;background-color:red;color:white; padding-right:11%;border-radius:5px;padding-left:11%;">Delete</a></div><td>'?>
                                 
  		  	  			</tr>
  		  	  		

@@ -123,7 +123,7 @@ if(mysqli_num_rows($query)>=1)
 		$mail->Host = 'Smtp.gmail.com;Smtp.live.com';  // Specify main and backup SMTP servers
 		$mail->SMTPAuth = true;                               // Enable SMTP authentication
 		$mail->Username = 'akgimadmission2017@gmail.com';                 // SMTP username
-		$mail->Password = 'akgim@2017_2019';                           // SMTP password
+		$mail->Password = '';//INSERT PASSWORD                           // SMTP password
 		$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
 		$mail->Port = 587;               
 		$mail->SMTPOptions = array( 'ssl' => array( 'verify_peer' => false, 'verify_peer_name' => false, 'allow_self_signed' => true ) );                     // TCP port to connect to
