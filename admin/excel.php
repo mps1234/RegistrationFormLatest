@@ -1,10 +1,10 @@
 <?php
-$connect = mysqli_connect("localhost","root","","akgim-registration");
+include('../dbconnect.php');
 $output = "";
 if(isset($_POST['export_excel']))
 {
 	$sql = "SELECT * from studentdetails";
-	$result = mysqli_query($connect, $sql);
+	$result = mysqli_query($con, $sql);
 	if(mysqli_num_rows($result)>0)
 		{
 
@@ -13,13 +13,14 @@ if(isset($_POST['export_excel']))
 			<caption style="text-align:center;">Student Details</caption>
 				<tr>
 					<th rowspan="2">Date </th>
-		 			  		<th rowspan="2">SEE AKTU Roll No </th> 
+		 			  		<th rowspan="2">UPSEE Roll No </th> 
 		 			  		<th rowspan="2">General Rank </th> 
 		 			  		<th rowspan="2">Category Rank </th> 
-		  			  	<th rowspan="2">Exam (CAT/MAT/CMAT)</th> 
-		            <th rowspan="2">Exam Percentile</th>
+		  			  		<th rowspan="2">Exam (CAT/MAT/CMAT)</th> 
+		           			<th rowspan="2">Exam Percentile</th>
+		           			<th rowspan="2">Month and Year</th>
 		 			  		<th rowspan="2">Any Other Exam(Name) </th>
-		 		  	  	<th rowspan="2">Percentile </th>
+		 		  	  		<th rowspan="2">Percentile </th>
 
 		 		  	  		<th rowspan="2">Student Name</th>
 		 		  	  		<th rowspan="2">Email Id</th>
@@ -30,8 +31,9 @@ if(isset($_POST['export_excel']))
 		 		  	  		<th rowspan="2">Gender</th>
 		 		  	  		<th rowspan="2">State of Domicile</th>
 
+		 		  	  		<th rowspan="2">Candidate Contact Number</th>
 		 		  	  		<th rowspan="2">Parent Contact Number</th>
-                  <th rowspan="2">Candidate Contact Number</th>
+                  
 
 		 		  	  		<th rowspan="2">Permanent Address</th>
 		 		  	  		<th rowspan="2">Pincode</th>
@@ -50,9 +52,10 @@ if(isset($_POST['export_excel']))
 
                   
 
-                  <th colspan="4" style="text-align: center;">Graduation</th>
+                  <th colspan="5" style="text-align: center;">Graduation</th>
+                  <th colspan="5" style="text-align: center;">Post Graduation</th>
 
-                  <th colspan="4" style="text-align: center;">Any Other</th>
+                  <th colspan="5" style="text-align: center;">Any Other</th>
 
 
 		 		  	  		<th rowspan="2">Experience Duration</th>
@@ -75,12 +78,19 @@ if(isset($_POST['export_excel']))
 
 
                   
-
+                  <th>Course Name</th>
                   <th>College Name</th>
                   <th>University</th>
                   <th>Passing Year</th>
                   <th>Percentage</th>
 
+                  <th>Course Name</th>
+                  <th>College Name</th>
+                  <th>University</th>
+                  <th>Passing Year</th>
+                  <th>Percentage</th>
+
+                  <th>Course Name</th>
                   <th>College Name</th>
                   <th>University</th>
                   <th>Passing Year</th>
@@ -102,6 +112,7 @@ if(isset($_POST['export_excel']))
 					<td>'.$row["category_rank"].'</td>
 					<td>'.$row["cat_mat_cmat"].'</td>
 					<td>'.$row["percentile"].'</td>
+					<td>'.$row["month_year"].'</td>
 					<td>'.$row["other_exam_name"].'</td>
 					<td>'.$row["other_exam_percentile"].'</td>
 					<td>'.$row["name"].'</td>
@@ -114,10 +125,9 @@ if(isset($_POST['export_excel']))
 					<td>'.$row["Gender"].'</td>
 					<td>'.$row["state_of_domicile"].'</td>
 
-					<td>'.$row["parentNo"].'</td>
 					<td>'.$row["candidateNo"].'</td>
-
-
+					<td>'.$row["parentNo"].'</td>
+					
 					<td>'.$row["permanent_add"].'</td>
 					<td>'.$row["pincode_perm"].'</td>
 					
@@ -139,12 +149,19 @@ if(isset($_POST['export_excel']))
 					<td>'.$row["12_percentage"].'</td>
 
 							
-
+							<td>'.$row['graduation_course'].'</td>
 							<td>'.$row['graduation_college'].'</td>
 							<td>'.$row['graduation_university'].'</td>
 							<td>'.$row['graduation_passingyear'].'</td>
 							<td>'.$row['graduation_percentage'].'</td>
 
+							<td>'.$row['postgraduation_course'].'</td>
+							<td>'.$row['postgraduation_college'].'</td>
+							<td>'.$row['postgraduation_university'].'</td>
+							<td>'.$row['postgraduation_passingyear'].'</td>
+							<td>'.$row['postgraduation_percentage'].'</td>
+
+							<td>'.$row['other_course'].'</td>
 							<td>'.$row['other_college'].'</td>
 							<td>'.$row['other_university'].'</td>
 							<td>'.$row['other_passingyear'].'</td>

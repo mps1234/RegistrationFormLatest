@@ -6,5 +6,5 @@ unset($_SESSION['sess_user_a']);
 session_destroy();
 }
 
-header("Location:http://admission.akgim.edu.in/admin/index.php");
+header("Location:index.php");
 ?>

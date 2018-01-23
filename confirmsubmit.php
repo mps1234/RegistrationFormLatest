@@ -1,4 +1,4 @@
-r<!doctype html>
+<!doctype html>
 <html>
 
 <head>
@@ -71,10 +71,9 @@ r<!doctype html>
     </div>
     <div class="row"></div>
     <div>
-        <h6 class="grey-text center"> Kindly cofirm your email id here, an auto-generated link will be sent to the given email, kindly click on the link for confirming registration form submission</h6><br><br><br>
+        <h6 class="grey-text center"> Kindly confirm your email id here, an auto-generated link will be sent to the given email, kindly click on the link for confirming registration form submission</h6><br><br><br>
 
 
-        
             <div class="row">
                 <form class="form" action="" method="POST">
                 <div class="col s3" style="margin-left:4%;"></div>
@@ -93,26 +92,23 @@ r<!doctype html>
                 </div>
         
         <?php
+        
+        include('dbconnect.php');
 
-
-if(isset($_POST['submit']))
-{
-	$email=$_POST['email'];
-	$con=mysqli_connect("localhost","root","","akgim-registration") or die(mysqli_error());
+        if(isset($_POST['submit'])){
+	       $email=$_POST['email'];
+	       $query=mysqli_query($con, "SELECT email FROM studentdetails WHERE email='".$email."'");
 	
-	$query=mysqli_query($con,"SELECT email FROM studentdetails WHERE email='".$email."'");
-	
-if(mysqli_num_rows($query)>=1)
-  {
-    while($row=mysqli_fetch_array($query))
-    {
-      $email1=md5($row['email']);
-	  $email=$row['email'];
-    }
-    $link="<a href='http://admission.akgim.edu.in/reset.php?key=".$email1."'>Click here to verify your email and confirm form submission</a>";
+            if(mysqli_num_rows($query)>=1){
+                while($row=mysqli_fetch_array($query)){
+                  $email1=md5($row['email']);
+            	  $email=$row['email'];
+                }
+                
+        $link="<a href='http://admission.akgim.edu.in/reset.php?key=".$email1."'>Click here to verify your email and confirm form submission</a>";
     
     
-    require 'PHPmail/PHPMailerAutoload.php';
+        require 'PHPmail/PHPMailerAutoload.php';
 		require 'PHPmail/class.phpmailer.php'; // path to the PHPMailer class
 		require 'PHPmail/class.smtp.php';
 
@@ -123,53 +119,48 @@ if(mysqli_num_rows($query)>=1)
 		$mail->isSMTP();                                      // Set mailer to use SMTP
 		$mail->Host = 'Smtp.gmail.com;Smtp.live.com';  // Specify main and backup SMTP servers
 		$mail->SMTPAuth = true;                               // Enable SMTP authentication
-		$mail->Username = 'mayur.pathak52@gmail.com';                 // SMTP username
-		$mail->Password = 'may_ur123gmail#';                           // SMTP password
+		$mail->Username = 'akgimadmission2017@gmail.com';                 // SMTP username
+		$mail->Password = '';                           // SMTP password
 		$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
 		$mail->Port = 587;               
 		$mail->SMTPOptions = array( 'ssl' => array( 'verify_peer' => false, 'verify_peer_name' => false, 'allow_self_signed' => true ) );                     // TCP port to connect to
 
-		$mail->setFrom('mayur.pathak52@gmail.com', 'mayur');    // Add a recipient
+		$mail->setFrom('akgimadmission2017@gmail.comm','AKGIM');    // Add a recipient
 		$mail->addAddress($email);  
 		$mail->isHTML(true);                                  // Set email format to HTML
 		$mail->Subject = 'AKGIM (MBA Registration Form Email Verification)';
 		$mail->Body    = 'Click On This Link to verify your email address '.$link.'';
 		$mail->AltBody = 'Form Submission Verification Link';
 
-		if(!$mail->send())
-			{
-			 echo "<div class='alert2' style='text-align:center;'>
-  <span class='closebtn' onclick='this.parentElement.style.display=\"none\";'>&times;</span>  Please enter the valid email.</div>";
-    }
-			else 
-			{
-
-				echo "<div class='alert' style='text-align:center;'>
-  <span class='closebtn' onclick='this.parentElement.style.display=\"none\";'>&times;</span> 
-  <strong> A verification link has been sent to your email id, kindly click on that link for verification </strong> 
-</div>";
-			
-			
-			}
+		if(!$mail->send()){
+			echo "<div class='alert2' style='text-align:center;'>
+            <span class='closebtn' onclick='this.parentElement.style.display=\"none\";'>&times;</span>
+            Please enter the valid email.
+                </div>";
+            }
+			else{
+			echo "<div class='alert' style='text-align:center;'>
+                <span class='closebtn' onclick='this.parentElement.style.display=\"none\";'>&times;</span> 
+                <strong> A verification link has been sent to your email id, kindly click on that link for verification </strong> 
+                </div>";
+                
+                $URL="http://akgim.edu.in/";
+                echo '<META HTTP-EQUIV="refresh" content="5;URL=' . $URL . '">';
+        		}
 			}
 
 			else{
-
 				echo "<div class='alert2' style='text-align:center;'>
-  <span class='closebtn' onclick='this.parentElement.style.display=\"none\";'>&times;</span>  Please enter the valid email which you provided during form submission </div>";
-				
+                <span class='closebtn' onclick='this.parentElement.style.display=\"none\";'>&times;</span>
+                Please enter the valid email which you provided during form submission 
+                </div>";
 			}
-
-}
-?>
+        }
+    ?>
 
             <br><br><br><br><br><br>
-            <!-- Column 1 end -->
+            
             </div>
 
-
-
-
 </body>
-
 </html>

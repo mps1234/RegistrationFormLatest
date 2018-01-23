@@ -1,7 +1,7 @@
 <?php 
 session_start();
 if(isset($_SESSION["sess_user_a"])){
-  header("Location:http://admission.akgim.edu.in/admin/admin.php");
+  header("Location:admin.php");
 }
 else{
 
@@ -101,7 +101,7 @@ else{
 
     
 <?php 
-include('../dbconnect.php');
+	include('../dbconnect.php');
 
 	if(isset($_POST["Submit"])){
 
@@ -109,26 +109,22 @@ include('../dbconnect.php');
 				$user=$_POST['adusername'];
 				$pass=md5($_POST['adpassword']);
 
-				
 				$query=mysqli_query($con,"SELECT * FROM admin WHERE username='".$user."' AND password='".$pass."'");
-	$numrows=mysqli_num_rows($query);
-	if($numrows!=0)
-	{
-		while($row=mysqli_fetch_assoc($query))
-			{
-					$dbusername=$row['username'];
-					$dbpassword=$row['password'];
-					$Name="admin";
-			}
+				$numrows=mysqli_num_rows($query);
 
-	if($user == $dbusername && $pass == $dbpassword)
-		{
-			session_start();
-			$_SESSION['sess_user_a']=$Name;
+				if($numrows!=0){
+					while($row=mysqli_fetch_assoc($query)){
+						$dbusername=$row['username'];
+						$dbpassword=$row['password'];
+						$Name="admin";
+					}
 
+				if($user == $dbusername && $pass == $dbpassword){
+						session_start();
+						$_SESSION['sess_user_a']=$Name;
 
-			/* Redirect browser */
-			header("Location: http://admission.akgim.edu.in/admin/admin.php");
+				/* Redirect browser */
+				header("Location: admin.php");
 		}
 	} else {
 				echo "<div class='alert2' style='text-align:center;'>
@@ -140,6 +136,7 @@ include('../dbconnect.php');
   				<span class='closebtn' onclick='this.parentElement.style.display=\"none\";'>&times;</span> All fields are required!</div>";
 		}
 }
+
 ?>
 	
 </form>

@@ -1,32 +1,40 @@
 <?php
+
 include('dbconnect.php');
 	
 	
-		/* declaration of variables */
+	/* declaration of variables */
 	$see_rollno = $gen_rank = $category_rank = $cat_mat_cmat = $percentile = $other_exam_name = $other_exam_percentile = "";
-    $date="";
+    $date= $month_year ="";
+    
 	$name = $email = $fname = $dob = $nationality = $category = $gender = $state_of_domicile =$parentno=$candidateno= "";
 
 	$permanent_add=$pincode_perm=$telno_perm=$correspondence_add=$pincode_corr=$telno_corr=$local_add=$pincode_loc=$telno_loc="";
 
 	$school_name_10 = $board_10 = $passingyear_10 = $percentage_10 = "";
 	$school_name_12 = $board_12 = $passingyear_12 = $percentage_12 = "";
+	
 	$diploma_college = $diploma_university = $diploma_passingyear = $diploma_percentage = "";
-	$graduation_college = $graduation_university = $graduation_passingyear = $graduation_percentage = "";
-	$other_college = $other_university = $other_passingyear = $other_percentage = "";
+	
+	$graduation_course = $graduation_college = $graduation_university = $graduation_passingyear = $graduation_percentage = "";
+	
+	$postgraduation_course = $postgraduation_college = $postgraduation_university = $postgraduation_passingyear= $postgraduation_percentage = "";
+	
+	$other_course = $other_college = $other_university = $other_passingyear = $other_percentage = "";
+	
 	$experience_duration = $exp_organisation_name = $hostel_req = "";
 
 
 if(isset($_POST['submit']))
 		{
             date_default_timezone_set("Asia/Calcutta");
-            $date=date("Y/m/d h:i:sa");
+            $date=date("Y/m/d");
 
 			$see_rollno = mysqli_real_escape_string($con,$_POST['rollno']);
 			$gen_rank = mysqli_real_escape_string($con,$_POST['genrank']);
 			$category_rank = mysqli_real_escape_string($con,$_POST['catrank']);
 			$cat_mat_cmat = mysqli_real_escape_string($con,$_POST['cat_mat_cmat']);
-			$percentile = mysqli_real_escape_string($con,$_POST['percentile']);
+			$month_year = mysqli_real_escape_string($con,$_POST['month_year']);
 			$other_exam_name = mysqli_real_escape_string($con,$_POST['examname']);
 			$other_exam_percentile = mysqli_real_escape_string($con,$_POST['rank']);
 
@@ -58,11 +66,19 @@ if(isset($_POST['submit']))
 			$passingyear_12 = mysqli_real_escape_string($con,$_POST['passingyear12']);
 			$percentage_12 = mysqli_real_escape_string($con,$_POST['percentage12']);
 
+			$graduation_course = mysqli_real_escape_string($con,$_POST['graduationcourse']);
 			$graduation_college = mysqli_real_escape_string($con,$_POST['graduationcollege']);
 			$graduation_university = mysqli_real_escape_string($con,$_POST['graduationuniversity']);
 			$graduation_passingyear = mysqli_real_escape_string($con,$_POST['graduationpassingyear']);
 			$graduation_percentage = mysqli_real_escape_string($con,$_POST['graduationpercentage']);
 
+			$postgraduation_course = mysqli_real_escape_string($con,$_POST['postgraduationcourse']);
+			$postgraduation_college = mysqli_real_escape_string($con,$_POST['postgraduationcollege']);
+			$postgraduation_university = mysqli_real_escape_string($con,$_POST['postgraduationuniversity']);
+			$postgraduation_passingyear = mysqli_real_escape_string($con,$_POST['postgraduationpassingyear']);
+			$postgraduation_percentage = mysqli_real_escape_string($con,$_POST['postgraduationpercentage']);
+
+			$other_course = mysqli_real_escape_string($con,$_POST['othercourse']);
 			$other_college = mysqli_real_escape_string($con,$_POST['othercollege']);
 			$other_university = mysqli_real_escape_string($con,$_POST['otheruniversity']);
 			$other_passingyear = mysqli_real_escape_string($con,$_POST['otherpassingyear']);
@@ -77,12 +93,11 @@ if(isset($_POST['submit']))
 
 
 
-	$sql = "INSERT INTO studentdetails(Date,see_rollno,gen_rank,category_rank,cat_mat_cmat,percentile,other_exam_name,other_exam_percentile,name,email,fname,dob,nationality,category,gender,state_of_domicile,parentNo,candidateNo,permanent_add,pincode_perm,correspondence_add,pincode_corr,local_add,pincode_loc,10_school_name,10_board,10_passingyear,10_percentage,12_school_name,12_board,12_passingyear,12_percentage,graduation_college,graduation_university,graduation_passingyear,graduation_percentage,other_college,other_university,other_passingyear,other_percentage,experience_duration,exp_organisation_name,hostel_req) 
+	$sql = "INSERT INTO studentdetails(Date,see_rollno,gen_rank,category_rank,cat_mat_cmat,percentile,month_year,other_exam_name,other_exam_percentile,name,email,fname,dob,nationality,category,gender,state_of_domicile,candidateNo,parentNo,permanent_add,pincode_perm,correspondence_add,pincode_corr,local_add,pincode_loc,10_school_name,10_board,10_passingyear,10_percentage,12_school_name,12_board,12_passingyear,12_percentage,graduation_course,graduation_college,graduation_university,graduation_passingyear,graduation_percentage,postgraduation_course,postgraduation_college,postgraduation_university,postgraduation_passingyear,postgraduation_percentage,other_course,other_college,other_university,other_passingyear,other_percentage,experience_duration,exp_organisation_name,hostel_req) 
 
-	VALUES('$date','$see_rollno','$gen_rank','$category_rank','$cat_mat_cmat','$percentile','$other_exam_name','$other_exam_percentile','$name','$email','$fname','$dob','$nationality','$category','$gender','$state_of_domicile','$parentno','$candidateno','$permanent_add','$pincode_perm','$correspondence_add','$pincode_corr','$local_add','$pincode_loc','$school_name_10','$board_10','$passingyear_10','$percentage_10','$school_name_12','$board_12','$passingyear_12','$percentage_12','$graduation_college','$graduation_university','$graduation_passingyear','$graduation_percentage','$other_college','$other_university','$other_passingyear','$other_percentage','$experience_duration','$exp_organisation_name','$hostel_req')";
+	VALUES('$date','$see_rollno','$gen_rank','$category_rank','$cat_mat_cmat','$percentile','$month_year','$other_exam_name','$other_exam_percentile','$name','$email','$fname','$dob','$nationality','$category','$gender','$state_of_domicile','$candidateno','$parentno','$permanent_add','$pincode_perm','$correspondence_add','$pincode_corr','$local_add','$pincode_loc','$school_name_10','$board_10','$passingyear_10','$percentage_10','$school_name_12','$board_12','$passingyear_12','$percentage_12','$graduation_course','$graduation_college','$graduation_university','$graduation_passingyear','$graduation_percentage','$postgraduation_course','$postgraduation_college','$postgraduation_university','$postgraduation_passingyear','$postgraduation_percentage','$other_course','$other_college','$other_university','$other_passingyear','$other_percentage','$experience_duration','$exp_organisation_name','$hostel_req')";
 
 					$result = mysqli_query($con,$sql);
-
 
 						if($result)
 							{	
@@ -90,7 +105,7 @@ if(isset($_POST['submit']))
 
 								session_start();
 								$_SESSION['email12'] = $email;
-								header('Refresh:0;url=http://admission.akgim.edu.in/confirmsubmit.php');
+								header('Refresh:0;url=confirmsubmit.php');
 								
 							}
 						else

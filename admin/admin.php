@@ -2,7 +2,7 @@
 session_start();
 
 if(!isset($_SESSION["sess_user_a"])){
-  header("Location:http://admission.akgim.edu.in/admin/index.php");
+  header("Location:index.php");
 }
 else{
 
@@ -35,6 +35,8 @@ else{
     <meta name="msapplication-TileImage" content="../favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
     <!-- Favicon Ends -->
+
+
 </head>
 <style>
 		#myInput {
@@ -61,6 +63,8 @@ th{
 }
 
 </style>
+
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 <!-- jQuery library -->
@@ -74,13 +78,10 @@ th{
         {
            var ajaxRequest;  
            var deleteit = ele.attr('value')
-           
            var queryString = "?id=" + deleteit;
           
-
            try {
-            
-              ajaxRequest = new XMLHttpRequest();
+             ajaxRequest = new XMLHttpRequest();
            }catch (e) {
               
               try {
@@ -89,8 +90,7 @@ th{
                  try{
                     ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
                  }catch (e){
-                   
-                    
+                        
                     return false;
                  }
               }
@@ -106,16 +106,25 @@ th{
            }
            
        }
- $(document).ready(function()
-{ 
-  $('.deleteit').click(function ()
-    {   
+
+ $(document).ready(function(){ 
+  $('.deleteit').click(function (){   
       ajaxFunction($(this));
     });
-});
+ });
+
 </script>
 
 <script>
+function ConfirmDelete()
+{
+  var x = confirm("Are you sure you want to delete?");
+  if (x)
+      return true;
+  else
+    return false;
+}
+
 function myFunction() {
   var input, filter, table, tr, td, i;
   input = document.getElementById("myInput");
@@ -136,27 +145,33 @@ function myFunction() {
   }
 }
 </script>
+
 <script>
+
 window.onload=scroll;
   function scroll(){
   var m=document.getElementById('myTable');
   m.style.overflowX="scroll";
 }
 </script>
+
+  <div class="container-fluid">
  
 		<div id="header">
-					<h1 style="text-align: center">Ajay Kumar Garg Institute of Management</h1><hr size="2">
-					          
-
-			<h2 style="text-align: center;text-decoration: underline;">MBA Registration Form</h2>
-			<h2 style="text-align: center;">Student Details</h2>
-      <button style="margin-right:10%;" class='btn btn-primary' onclick="window.location.href='http://admission.akgim.edu.in/admin/logout.php'">Logout</button>
+					<h2 style="text-align: center">Ajay Kumar Garg Institute of Management</h2><hr size="2">
+					<h4 style="text-align: center;text-decoration: underline;">MBA Registration Form</h4>
+			   <h5 style="text-align: center;">Student Details</h5>
+      <div class="row">
+         <button style="margin-right:10%;" class='btn btn-primary' onclick="window.location.href='logout.php'">Logout</button>
+      </div>
+     
 
 		</div>
 		
 
 <?php
-include('../dbconnect.php');
+
+    include('../dbconnect.php');
 		 
  		$data = mysqli_query($con,"SELECT * FROM studentdetails"); 
 ?>
@@ -170,26 +185,28 @@ include('../dbconnect.php');
    				<caption style="text-align: center;">Student Details</caption>
  			  		
  			  			<tr>
-                            <th style="text-align:center;" rowspan="2">Date </th>
-		 			  		<th rowspan="2">SEE AKTU Roll No </th> 
+                <th style="text-align:center;" rowspan="2">Date </th>
+		 			  		<th rowspan="2">UPSEE Roll No </th> 
 		 			  		<th rowspan="2">General Rank </th> 
 		 			  		<th rowspan="2">Category Rank </th> 
 		  			  	<th rowspan="2">Exam (CAT/MAT/CMAT)</th> 
 		            <th rowspan="2">Exam Percentile</th>
-		 			  		<th rowspan="2">Any Other Exam(Name) </th>
+                <th rowspan="2">Month and Year</th>
+		 			  		<th rowspan="2">Name of Other Exam </th>
 		 		  	  	<th rowspan="2">Percentile </th>
 
-		 		  	  		<th rowspan="2">Student Name</th>
-		 		  	  		<th rowspan="2">Email Id</th>
+		 		  	  		<th rowspan="2">Student's Name</th>
+		 		  	  		<th rowspan="2" style="text-align: center;">Email Id</th>
 		 		  	  		<th rowspan="2">Father's Name</th>
 		 		  	  		<th rowspan="2">Date of Birth</th>
 		 		  	  		<th rowspan="2">Nationality</th>
 		 		  	  		<th rowspan="2">Category</th>
 		 		  	  		<th rowspan="2">Gender</th>
 		 		  	  		<th rowspan="2">State of Domicile</th>
-                  <th rowspan="2">Parent Contact Number</th>
-                  <th rowspan="2">Candidate Contact Number</th>
 
+                  <th rowspan="2">Candidate Contact Number</th>
+                  <th rowspan="2">Parent Contact Number</th>
+                  
 		 		  	  		<th rowspan="2">Permanent Address</th>
 		 		  	  		<th rowspan="2">Pincode</th>
 		 		  	  		
@@ -205,9 +222,10 @@ include('../dbconnect.php');
 
                   <th colspan="4" style="text-align: center;">12<sup>th</sup> Result</th>
 
-                  <th colspan="4" style="text-align: center;">Graduation</th>
+                  <th colspan="5" style="text-align: center;">Graduation</th>
+                  <th colspan="5" style="text-align: center;">Post Graduation</th>
 
-                  <th colspan="4" style="text-align: center;">Any Other</th>
+                  <th colspan="5" style="text-align: center;">Any Other</th>
 
 
 		 		  	  		<th rowspan="2">Experience Duration</th>
@@ -218,6 +236,7 @@ include('../dbconnect.php');
                   <th rowspan="2">Delete</th>
 
 		 		  	  	</tr>
+
 		 		  	    <tr>
                   <th>School Name</th>
                   <th>Board</th>
@@ -229,11 +248,19 @@ include('../dbconnect.php');
                   <th>Passing Year</th>
                   <th>Percentage</th>
 
+                  <th>Course Name</th>
                   <th>College Name</th>
                   <th>University</th>
                   <th>Passing Year</th>
                   <th>Percentage</th>
 
+                  <th>Course Name</th>
+                  <th>College Name</th>
+                  <th>University</th>
+                  <th>Passing Year</th>
+                  <th>Percentage</th>
+
+                  <th>Course Name</th>
                   <th>College Name</th>
                   <th>University</th>
                   <th>Passing Year</th>
@@ -255,6 +282,7 @@ include('../dbconnect.php');
                                 <td><?php echo $r['category_rank']; ?></td>
                                	<td><?php echo $r['cat_mat_cmat']; ?></td>
                                	<td><?php echo $r['percentile']; ?></td>
+                                <td><?php echo $r['month_year']; ?></td>
                                	<td><?php echo $r['other_exam_name']; ?></td>
                                	<td><?php echo $r['other_exam_percentile']; ?></td>
 
@@ -266,8 +294,10 @@ include('../dbconnect.php');
                                	<td><?php echo $r['category']; ?></td>
                                	<td><?php echo $r['Gender']; ?></td>
                                	<td><?php echo $r['state_of_domicile']; ?></td>
-                                <td><?php echo $r['parentNo']; ?></td>
+
                                 <td><?php echo $r['candidateNo']; ?></td>
+                                <td><?php echo $r['parentNo']; ?></td>
+                                
 
                                	<td><?php echo $r['permanent_add']; ?></td>
                                	<td><?php echo $r['pincode_perm']; ?></td>
@@ -288,11 +318,19 @@ include('../dbconnect.php');
                                	<td><?php echo $r['12_passingyear']; ?></td>
                                	<td><?php echo $r['12_percentage']; ?></td>
 
+                                <td><?php echo $r['graduation_course']; ?></td>
                                	<td><?php echo $r['graduation_college']; ?></td>
                                	<td><?php echo $r['graduation_university']; ?></td>
                                	<td><?php echo $r['graduation_passingyear']; ?></td>
                                	<td><?php echo $r['graduation_percentage']; ?></td>
 
+                                <td><?php echo $r['postgraduation_course']; ?></td>
+                                <td><?php echo $r['postgraduation_college']; ?></td>
+                                <td><?php echo $r['postgraduation_university']; ?></td>
+                                <td><?php echo $r['postgraduation_passingyear']; ?></td>
+                                <td><?php echo $r['postgraduation_percentage']; ?></td>
+
+                                <td><?php echo $r['other_course']; ?></td>
                                	<td><?php echo $r['other_college']; ?></td>
                                	<td><?php echo $r['other_university']; ?></td>
                                	<td><?php echo $r['other_passingyear']; ?></td>
@@ -300,14 +338,14 @@ include('../dbconnect.php');
 
                                	<td><?php echo $r['experience_duration']; ?></td>
                                	<td><?php echo $r['exp_organisation_name']; ?></td>
-                                <td><?php echo $r['exp_organisation_name']; ?></td>
+                                <td><?php echo $r['hostel_req']; ?></td>
                                	
                                	<td><?php if($r['verified']==1)
                                   echo 'Yes';
                                   else
                                   echo 'No'; ?></td>
 
-                                <?php echo '<td><div class="deleteit" value=" '.$r['id'].'"><a style="background:none;cursor:pointer;background-color:red;color:white; padding-right:11%;border-radius:5px;padding-left:11%;">Delete</a></div><td>'?>
+							  <?php echo '<td><div class="deleteit" value=" '.$r['id'].'"><a Onclick="ConfirmDelete()" style="background:none;cursor:pointer;background-color:red;color:white; padding-right:11%;border-radius:5px;padding-left:11%;">Delete</a></div><td>'?>
                                 
  		  	  			</tr>
  		  	  		
@@ -319,9 +357,13 @@ include('../dbconnect.php');
  		  	  		</div>
               <div class="show"></div>
               <div>
-                <form action="http://admission.akgim.edu.in/admin/excel.php" method="post">
-                  <input type="submit" name="export_excel" class="btn btn-primary" value="Export to excel">
+              <div class="row">
+                <form action="excel.php" method="post">
+                <div class="col-md-6">
+                  <input type="submit" name="export_excel" class="btn btn-primary" value="Export to excel"></form></div>
+                </div>
               </div>
+        </div>
 </body>
 </html>
 <?php
