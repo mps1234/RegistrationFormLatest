@@ -39,6 +39,15 @@
     <meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
     <!-- Favicon Ends -->
+
+    <!-- jquery UI for month and year datepicker-->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+     <style> .ui-datepicker-calendar {
+        display: none;
+        }
+    </style> 
+
     <style>
         ::-webkit-input-placeholder { 
             color: #96999E;/* Chrome */
@@ -56,8 +65,7 @@
             color: #96999E;
             opacity: 1;
             }
-
-    </style>
+   </style>
 
     <script type="text/javascript">
         function checkemail() {
@@ -159,7 +167,7 @@
                 </div>
                 <div class="col s2 m2 valign"><br>
                     <div class="input-field">
-                        <input type="text" id="month_year" name="month_year">
+                        <input type="text" id="month_year" name="month_year" class="date-picker">
                         <label for="month_year">Appearing Year/Month</label>
                     </div>
                 </div>
@@ -585,13 +593,26 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
         <script>
             $.validate({
-                s
+                
                 lang: 'en'
             });
 
             $("form").validate({
                 errorClass: "error-class",
             });
+
+
+           $(function() {
+                $('.date-picker').datepicker( {
+                maxDate: new Date,
+                yearRange: '2016:2018',
+
+                dateFormat: 'MM yy',
+                onClose: function(dateText, inst) { 
+                    $(this).datepicker('setDate', new Date(inst.selectedYear, inst.selectedMonth, 1));
+                }
+            });
+        });
 
         </script>
     </div>
