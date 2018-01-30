@@ -119,13 +119,13 @@
 		$mail->isSMTP();                                      // Set mailer to use SMTP
 		$mail->Host = 'Smtp.gmail.com;Smtp.live.com';  // Specify main and backup SMTP servers
 		$mail->SMTPAuth = true;                               // Enable SMTP authentication
-		$mail->Username = 'akgimadmission2017@gmail.com';                 // SMTP username
+		$mail->Username = 'akgimadmissionstomba@gmail.com';                 // SMTP username
 		$mail->Password = '';                           // SMTP password
 		$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
 		$mail->Port = 587;               
 		$mail->SMTPOptions = array( 'ssl' => array( 'verify_peer' => false, 'verify_peer_name' => false, 'allow_self_signed' => true ) );                     // TCP port to connect to
 
-		$mail->setFrom('akgimadmission2017@gmail.comm','AKGIM');    // Add a recipient
+		$mail->setFrom('akgimadmissionstomba@gmail.comm','AKGIM');    // Add a recipient
 		$mail->addAddress($email);  
 		$mail->isHTML(true);                                  // Set email format to HTML
 		$mail->Subject = 'AKGIM (MBA Registration Form Email Verification)';

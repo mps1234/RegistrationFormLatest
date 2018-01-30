@@ -43,8 +43,13 @@
     <!-- jquery UI for month and year datepicker-->
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
      <style> .ui-datepicker-calendar {
         display: none;
+        }
+
+        .ui-datepicker-title{
+            cursor: pointer;
         }
     </style> 
 
@@ -90,6 +95,9 @@
                 }
             });
         }
+   </script>
+   <script>
+
    </script>
  
 
@@ -321,7 +329,7 @@
                 </div>
                 <div class="col s3 m3">
                     <br>
-                    <h5>Parent's Contact No.<span class="error"> *</span></h5>
+                    <h5>Parents' Contact No.<span class="error"> *</span></h5>
                 </div>
                 <div class="col s2 m2">
                     <div class="input-field">
@@ -612,7 +620,13 @@
                     $(this).datepicker('setDate', new Date(inst.selectedYear, inst.selectedMonth, 1));
                 }
             });
+
+            
+
+            
         });
+
+       
 
         </script>
     </div>
